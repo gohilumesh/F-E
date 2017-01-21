@@ -2,15 +2,15 @@
 
 
 ## Javascript question
-1. Check if object is empty or not
+Question 1. Check if object is empty or not
 ```
 function isEmpty(TEMP_OBJECT) {
   return Object.keys(TEMP_OBJECT).length === 0 && TEMP_OBJECT.constructor === Object;
 }
 ```
-[Different ways to check if object is empty or not ](http://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object)
+[more options](http://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object)
 
-2. Given and object and property path. Get value from property path
+Question 2. Given and object and property path. Get value from property path
 ```
 function getPropertyValue(TEMP_OBJECT, path) {
   return path.split(.).reduce((prev, current) => {
@@ -40,17 +40,17 @@ path = system.database.1.port;
 
 Output: 3307
 ```
-[Different ways to do it ](http://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-with-string-key)
+[more options](http://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-with-string-key)
 
-3. How to filter object from Arrays of Objects
+Question 3. How to filter object from Arrays of Objects
 ```
   let filteredArray = [{name: 'john'},{name: 'kelly'}].filter((value) => { return value.name === 'kelly'});
 
   Filter method return Array of objects
 ```
 
-4. How to replace all the occurrences of string
+Question 4. How to replace all the occurrences of string
 ```
   str = str.replace(/test/g, '')
 ```
-[Different ways to do it ](http://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string-in-javascript?rq=1)
+[more options](http://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string-in-javascript?rq=1)
