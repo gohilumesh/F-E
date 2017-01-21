@@ -179,6 +179,18 @@ let max = 7;
 console.log(min + Math.floor(Math.random() * ((max-min)+1)));
 ```
 
+Question 10: Get HTML form values as json object
+```
+  // Use the array reduce function with form elements.
+  const formToJSON = elements => [].reduce.call(elements, (data, element) => {
+    data[element.name] = element.value;
+  }, {});
+
+  // pass the elements to above method, to get values
+  document.querySelector('HTML_FORM_CLASS').elements  
+```
+(More info)https://code.lengstorf.com/get-form-values-as-json/
+
 ## Widget Question
 
 Question 1. Design Project funding widget
