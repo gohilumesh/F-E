@@ -55,43 +55,6 @@ Question 4. How to replace all the occurrences of string
 ```
 [more options](http://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string-in-javascript?rq=1)
 
-Question 5. write a script that returns the number of occurrences of character given a string as input
-```
-function countCharacters(str) {
-  let count = {};
-  if (str) {
-    let stripStr = str.replace(/ /g, "").toLowerCase(); // remove space convert to lowercase
-    for (let chr of stripStr) {
-      if (count[chr]) {
-        count[chr]++;
-      } else {
-        count[chr] = 1;
-      }
-    }
-  }
-  return count;
-}
-
-console.log(countCharacters("the brown fox jumps over the lazy dog"));
-```
-
-Question 6. write a script that return the number of occurrences of character in "Join the 42..." paragraph example: the letter "j" occurs twice within the paragraph
-
-```
-function charCount(str, searchChar) {
-  let count = 0;
-  if (str) {
-    let stripStr = str.replace(/ /g, "").toLowerCase(); //remove spaces and covert to lowercase
-    for (let chr of stripStr) {
-      if (chr === searchChar) {
-        count++;
-      }
-    }
-  }
-  return count;
-}
-console.log(charCount('the brown fox jumps over the lazy dog', 'o'));
-```
 
 ## Widget Question
 
