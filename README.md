@@ -92,7 +92,83 @@ function charCount(str, searchChar) {
 }
 console.log(charCount('the brown fox jumps over the lazy dog', 'o'));
 ```
+Question 7. Recursive and non-recursive Factorial function
 
+```
+function recursiveFactorial(n) {
+  if (n < 1) {
+    throw Error("Value of N has to be greater then 1");
+  }
+  if (n === 1) {
+    return 1;
+  } else {
+    return n * recursiveFactorial(n -1);
+  }
+}
+
+console.log(recursiveFactorial(5));
+
+function factorial(n) {
+  if (n < 1) {
+    throw Error("Value of N has to be greater then 1");
+  }
+  if (n === 1) {
+    return 1
+  }
+  let result = 1;
+  for (let i=1; i <= n; i++) {
+    result = result * i;
+  }
+  return result;
+}
+
+console.log(factorial(5));
+
+```
+
+Question 8. Recursive and non recursive fibonacci-sequence
+```
+// 1, 1, 2, 3, 5, 8, 13, 21, 34
+
+function recursiveFibonacci(num) {
+  if(num <= 1) {
+        return 1;
+    } else {
+        return recursiveFibonacci(num - 1) + recursiveFibonacci(num - 2);
+    }
+}
+
+console.log(recursiveFibonacci(8));
+
+function fibonnaci(num) {
+  let a = 1, b = 0, temp;
+  while (num >= 0) {
+    temp = a;
+    a = a + b;
+    b = temp;
+    num--;
+  }
+  return b;
+}
+
+console.log(fibonnaci(7));
+
+// Memoization fibonnaci
+
+let fibonnaci = (function() {
+  let memo = {};
+  return function fib(num) {
+
+    if (memo[num]) return memo[num];
+    if (num <= 1) return 1;
+
+    return memo[num] = fib(num - 1) + fib(num - 2);
+  }
+})();
+
+console.log(fibonnaci(7))
+```
+[More info](https://medium.com/developers-writing/fibonacci-sequence-algorithm-in-javascript-b253dc7e320e#.m9ms009bh)
 
 ## Widget Question
 
