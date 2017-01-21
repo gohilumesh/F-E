@@ -170,6 +170,15 @@ console.log(fibonnaci(7))
 ```
 [More info](https://medium.com/developers-writing/fibonacci-sequence-algorithm-in-javascript-b253dc7e320e#.m9ms009bh)
 
+Question 9: Random Number between 5 and 7
+
+```
+// 5 to 7
+let min = 5;
+let max = 7;
+console.log(min + Math.floor(Math.random() * ((max-min)+1)));
+```
+
 ## Widget Question
 
 Question 1. Design Project funding widget
