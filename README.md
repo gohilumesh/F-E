@@ -48,3 +48,9 @@ Output: 3307
 
   Filter method return Array of objects
 ```
+
+4. How to replace all the occurrences of string
+```
+  str = str.replace(/test/g, '')
+```
+[Different ways to do it ](http://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string-in-javascript?rq=1)
