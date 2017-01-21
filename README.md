@@ -1,4 +1,4 @@
-#Front-end Job Interview Questions
+#Front-end Interview Questions
 
 
 ## Javascript question
@@ -9,3 +9,42 @@ function isEmpty(TEMP_OBJECT) {
 }
 ```
 [Different ways to check if object is empty or not ](http://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object)
+
+2. Given and object and property path. Get value from property path
+```
+function getPropertyValue(TEMP_OBJECT, path) {
+  return path.split(.).reduce((prev, current) => {
+      return prev ? prev[current] : undefined;
+    }, TEMP_OBJECT)
+}
+
+Input :
+let srcObject = {
+    'system' : {
+        'database' : {
+              '0' : {
+                'host' : '54.232.122',
+                'port' : 3306
+             },
+              '1' : {
+                'host' : '54.232.123',
+                'port' : 3307
+             },
+              '2' : {
+                'host' : '54.232.123',
+             }
+       }
+   }
+},
+path = system.database.1.port;
+
+Output: 3307
+```
+[Different ways to do it ](http://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-with-string-key)
+
+3. How to filter object from Arrays of Objects
+```
+  let filteredArray = [{name: 'john'},{name: 'kelly'}].filter((value) => { return value.name === 'kelly'});
+
+  Filter method return Array of objects
+```
