@@ -189,7 +189,53 @@ Question 10: Get HTML form values as json object
   // pass the elements to above method, to get values
   document.querySelector('HTML_FORM_CLASS').elements  
 ```
-(More info)https://code.lengstorf.com/get-form-values-as-json/
+[More info](https://code.lengstorf.com/get-form-values-as-json/)
+
+Question 11: Reverse the number
+```
+function reverse(num) {
+  let result = 0;
+  while( num != 0 )
+  {
+     result = result * 10;
+     result = result + num % 10;
+     num = Math.floor( num / 10 );   
+  }
+  return result;
+}
+
+console.log(reverse('12345'));
+```
+
+Question 12: Binary Search  [Array should be sorted]
+```
+function binarySearch(arr, val) {
+
+  let startIndex = 0,
+      stopIndex = arr.length -1,
+      middleIndex = Math.floor((startIndex + stopIndex) / 2);
+
+
+  while(arr[middleIndex] !== val && startIndex < stopIndex){
+
+    if (val < arr[middleIndex]){
+      stopIndex = middleIndex - 1;
+    } else if (val > arr[middleIndex]){
+       startIndex = middleIndex + 1;
+    }
+
+    middleIndex = Math.floor((startIndex + stopIndex) / 2);
+
+  }
+
+  return (arr[middleIndex] === val) ? middleIndex : -1;
+}
+
+
+console.log(binarySearch([-1, 10,22,35,48,56,67], 22));
+console.log(binarySearch([-1, 10,22,35,48,56,67], 27));
+```
+[More info] (https://www.nczonline.net/blog/2009/09/01/computer-science-in-javascript-binary-search/)
 
 ## Widget Question
 
