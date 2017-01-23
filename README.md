@@ -207,7 +207,23 @@ function reverse(num) {
 console.log(reverse('12345'));
 ```
 
-Question 12: Binary Search  [Array should be sorted]
+Question 12: Remove Duplicate elements from Array
+```
+var ar = [1, 2, 3, 5, 1, 5, 9, 1, 2, 8];
+function removeDuplicate() {
+  return ar.reduce((prev, current) => {
+    //Cannot use includes of array, since it is not supported by many browser
+    if (prev.indexOf(current) === -1){
+      prev.push(current);
+    }
+    return prev;
+  }, []);
+}
+
+console.log(removeDuplicate(ar));
+```
+
+Question 13: Binary Search  [Array should be sorted]
 ```
 function binarySearch(arr, val) {
 
@@ -236,6 +252,9 @@ console.log(binarySearch([-1, 10,22,35,48,56,67], 22));
 console.log(binarySearch([-1, 10,22,35,48,56,67], 27));
 ```
 [More info] (https://www.nczonline.net/blog/2009/09/01/computer-science-in-javascript-binary-search/)
+
+
+
 
 ## Widget Question
 
