@@ -192,6 +192,8 @@ Question 10: Get HTML form values as json object
   // Use the array reduce function with form elements.
   const formToJSON = elements => [].reduce.call(elements, (data, element) => {
     data[element.name] = element.value;
+    //check for multi checkbox and multi select
+    return data;
   }, {});
 
   // pass the elements to above method, to get values
