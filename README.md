@@ -2,13 +2,21 @@
 
 
 ## Javascript question
-Question 1. Check if object is empty or not
+Question 1. Check if object is empty or not.
 ```
 function isEmpty(TEMP_OBJECT) {
   return Object.keys(TEMP_OBJECT).length === 0 && TEMP_OBJECT.constructor === Object;
 }
 ```
 [more options](http://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object)
+
+Question 1.1 Check it is object or not
+```
+function isObject(obj) {
+  return (typeof obj === "object" && !Array.isArray(obj) && obj !== null);
+}
+```
+[more info](http://stackoverflow.com/questions/8511281/check-if-a-value-is-an-object-in-javascript)
 
 Question 2. Given and object and property path. Get value from property path
 ```
