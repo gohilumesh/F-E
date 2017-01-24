@@ -264,8 +264,6 @@ console.log(binarySearch([-1, 10,22,35,48,56,67], 27));
 [More info] (https://www.nczonline.net/blog/2009/09/01/computer-science-in-javascript-binary-search/)
 
 
-
-
 ## Widget Question
 
 Question 1. Design Project funding widget
@@ -275,3 +273,10 @@ Question 1. Design Project funding widget
 Question 2. Design visual display of list, And implement feature to add it to list
 
 [Checkout Github project link] (https://github.com/gohilumesh/list-visualize)
+
+
+## React coding test.
+
+Checkout below repository
+[UI Execrise] (https://github.com/gohilumesh/ui-exercise)
+[UI Image Gallery](https://github.com/gohilumesh/ui-image-gallery)
