@@ -261,6 +261,96 @@ deepExtend({}, objA, objB);
 ```
 [more info](http://youmightnotneedjquery.com/)
 
+Question 14: Sort ticket based on flying order.
+```
+"use strict";
+
+function SortTickets(tickets) {
+  this.reverseTickets = {}
+  this.tickets = tickets;
+  for (let key in this.tickets) {
+    this.reverseTickets[tickets[key]] = key;
+  }
+
+  // Get the starting point of ticket
+  let orderedTickets =[...this.getStartingPoint()];
+  // Get the ticket destination.
+  let currentValue = orderedTickets[orderedTickets.length -1];
+  while(currentValue)  {
+    currentValue = this.tickets[currentValue];
+    if (currentValue) {
+      orderedTickets.push(currentValue);
+    }
+  }
+  console.log(orderedTickets);
+}
+
+SortTickets.prototype.getStartingPoint = function() {
+  for (let tick in this.tickets) {
+    if (!(tick in this.reverseTickets)) {
+      return [tick,  this.tickets[tick]];
+    }
+  }
+  return null;
+}
+
+new SortTickets({
+  Athens: "Rio",
+  Barcelona: "Athens",
+  London: "NYC",
+  ND: "Lahore",
+  NYC: "Barcelona",
+  Rio: "ND"
+});
+```
+
+Question 15: Cuncurrent execute function based on input number
+```
+function concurrent(num) {
+  this.queue = [];
+  this.num = num;
+}
+
+concurrent.prototype.enqueue = function(value) {
+  this.queue.push(value);
+};
+
+concurrent.prototype.start = function() {
+  this.runningCount = 0;
+  while(this.queue.length > 0) {
+    if (this.runningCount < this.num) {  
+      this.queue.pop().call(this, () => {
+        this.runningCount--;
+        let count = this.runningCount;
+        if (count === 0) {
+          this.start();
+        }
+      });
+      this.runningCount++;
+    }
+  }
+};
+
+
+
+let callback = (done) => {
+  console.log('starting');
+  setTimeout(() => {
+    console.log('stopped');
+    done();
+  }, 200);
+}
+
+let c = new concurrent(2);
+c.enqueue(callback);
+c.enqueue(callback);
+c.enqueue(callback);
+c.enqueue(callback);
+c.enqueue(callback);
+c.enqueue(callback);
+c.start();
+```
+
 ## Algorithm
 
 Question 1: Binary Search  [Array should be sorted]
