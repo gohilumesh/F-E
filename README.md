@@ -351,6 +351,22 @@ c.enqueue(callback);
 c.start();
 ```
 
+Question 16: Array rotation
+```
+let a = [1,2,3,4,5];
+
+//Approach 1:
+console.log(a.reverse());
+
+//Approach 2:
+let reverse = a.reduce((prev, current) => {
+  prev.unshift(current);
+  return prev;
+}, []);
+
+console.log(reverse);
+```
+
 ## Algorithm
 
 Question 1: Binary Search  [Array should be sorted]
