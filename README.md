@@ -367,6 +367,38 @@ let reverse = a.reduce((prev, current) => {
 console.log(reverse);
 ```
 
+Question 17: Rotate 2D array
+```
+function transpose(arr) {
+  return arr[0].map(function(col, i) {
+  return arr.map(function(row) {
+    return row[i];
+  })
+});
+}
+
+console.log(transpose([
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12]
+]));
+```
+
+Question 18: Get Column from 2D Array
+```
+const getColumn = (arr, n) => arr.map(x => x[n]);
+
+const twoDimensionalArray = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+
+console.log(getColumn(twoDimensionalArray, 1));
+
+//Result = [2,5,8]
+```
+
 ## Algorithm
 
 Question 1: Binary Search  [Array should be sorted]
