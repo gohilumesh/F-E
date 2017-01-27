@@ -370,11 +370,9 @@ console.log(reverse);
 Question 17: Rotate 2D array
 ```
 function transpose(arr) {
-  return arr[0].map(function(col, i) {
-  return arr.map(function(row) {
-    return row[i];
-  })
-});
+  return arr[0].map((col, i) => {
+    return arr.map(row => row[i]);
+  });
 }
 
 console.log(transpose([
@@ -447,4 +445,4 @@ Question 2. Design visual display of list, And implement feature to add it to li
 
 Checkout below repository
 [UI Execrise] (https://github.com/gohilumesh/ui-exercise)
-[UI Image Gallery](https://github.com/gohilumesh/ui-image-gallery)
+[UI Image Gallery] (https://github.com/gohilumesh/ui-image-gallery)
