@@ -273,7 +273,7 @@ function SortTickets(tickets) {
   }
 
   // Get the starting point of ticket
-  let orderedTickets =[...this.getStartingPoint()];
+  let orderedTivckets =[...this.getStartingPoint()];
   // Get the ticket destination.
   let currentValue = orderedTickets[orderedTickets.length -1];
   while(currentValue)  {
@@ -411,6 +411,28 @@ function topN(arr, num) {
 }
 
 console.log(top5([1,8,3,4,5], 2));
+```
+Question 20: Get query params from Object
+```
+function getQueryParams(obj) {
+  let parms = '';
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      if (parms.length > 0) {
+        parms +='&';
+      }
+      parms += encodeURI(`${key}=${obj[key]}`);
+
+    }
+  }
+  return parms;
+}
+
+console.log(getQueryParams({
+  name: 'Umesh',
+  tel: '48289',
+  add: '3333 emearld st'
+}));
 ```
 ## Algorithm
 
