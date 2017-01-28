@@ -351,7 +351,7 @@ c.enqueue(callback);
 c.start();
 ```
 
-Question 16: Array rotation
+Question 16: Reversing an array
 ```
 let a = [1,2,3,4,5];
 
@@ -396,7 +396,22 @@ console.log(getColumn(twoDimensionalArray, 1));
 
 //Result = [2,5,8]
 ```
+Question 19: Get top N from array
+```
+function topN(arr, num) {
 
+  let counts = arr.reduce((prev, current) => {
+    prev[current] = (prev[current] || 0) + 1;
+    return prev;
+  }, {});
+
+  let sorted = Object.keys(counts).sort((a, b) => counts[a] - counts[b]);
+
+  return sorted.slice(sorted.length - num, sorted.length);
+}
+
+console.log(top5([1,8,3,4,5], 2));
+```
 ## Algorithm
 
 Question 1: Binary Search  [Array should be sorted]
