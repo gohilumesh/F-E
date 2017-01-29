@@ -436,6 +436,28 @@ console.log(getQueryParams({
 ```
 Question 21: [Travesing DOM] (http://www.javascriptcookbook.com/article/Traversing-DOM-subtrees-with-a-recursive-walk-the-DOM-function/)
 
+Question 22: Consecutive 1's in binary
+```
+function consecutiveOne(num)  {
+  let binaryArr = num.toString(2);
+
+  let maxOccurence = 0,
+      occurence = 0;
+  for (let i =0; i< binaryArr.length; i++) {
+    if (binaryArr[i] === '1') {
+      occurence += 1;
+      maxOccurence = Math.max(maxOccurence, occurence);
+    } else {
+      occurence = 0;
+    }
+  }
+  return maxOccurence;
+}
+//1101  = 13
+// 101 = 5
+console.log(consecutiveOne(5));
+```
+
 ## Algorithm
 
 Question 1: Binary Search  [Array should be sorted]
