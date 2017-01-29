@@ -481,6 +481,9 @@ function pascalTriangle(n) {
 
 console.log(pascalTriangle(2));
 ```
+Question 3: Quick sort Algorithm
+
+[Refer this link] (https://www.nczonline.net/blog/2012/11/27/computer-science-in-javascript-quicksort/)
 
 ## Widget Question
 
