@@ -469,13 +469,14 @@ console.log(binarySearch([-1, 10,22,35,48,56,67], 27));
 
 ## Widget Question
 
-Question 1. Design Project funding widget
-
+Question 1: Design Project funding widget
 [Checkout Github gist link] (https://gist.github.com/gohilumesh/ecdf01304f5d3edbb371f6b32ec9eda2)
 
-Question 2. Design visual display of list, And implement feature to add it to list
-
+Question 2: Design visual display of list, And implement feature to add it to list
 [Checkout Github project link] (https://github.com/gohilumesh/list-visualize)
+
+Question 3: CSS slider using animation
+[Checkout Github gist link] (https://gist.github.com/gohilumesh/7359d812050c036518a75314ad6f9f6d)
 
 
 ## React coding test.
