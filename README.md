@@ -434,6 +434,8 @@ console.log(getQueryParams({
   add: '3333 emearld st'
 }));
 ```
+Question 21: [Travesing DOM] (http://www.javascriptcookbook.com/article/Traversing-DOM-subtrees-with-a-recursive-walk-the-DOM-function/)
+
 ## Algorithm
 
 Question 1: Binary Search  [Array should be sorted]
