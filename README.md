@@ -466,6 +466,21 @@ console.log(binarySearch([-1, 10,22,35,48,56,67], 27));
 ```
 [More info] (https://www.nczonline.net/blog/2009/09/01/computer-science-in-javascript-binary-search/)
 
+Question: 2: Pascal triangle.
+```
+function pascalTriangle(n) {
+    let last = [1], triangle = [last];
+    for (let i = 0; i < n; i++) {
+        const ls = [0].concat(last),        //[0,1]           // [0,1,1]
+              rs = last.concat([0]);        //[1,0]           // [1,1,0]
+        last = rs.map((r, i) => ls[i] + r); //[1, 1]          // [1,2,1]
+        triangle = triangle.concat([last]); // [[1], [1,1]]   // [1], [1, 1], [1, 2, 1]
+    }
+    return triangle;   
+};
+
+console.log(pascalTriangle(2));
+```
 
 ## Widget Question
 
