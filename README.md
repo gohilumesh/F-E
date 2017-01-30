@@ -21,7 +21,7 @@ function isObject(obj) {
 Question 2. Given and object and property path. Get value from property path
 ```
 function getPropertyValue(TEMP_OBJECT, path) {
-  return path.split(.).reduce((prev, current) => {
+  return path.split('.').reduce((prev, current) => {
       return prev ? prev[current] : undefined;
     }, TEMP_OBJECT)
 }
