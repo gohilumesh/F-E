@@ -428,7 +428,7 @@ console.log(getQueryParams({
   add: '3333 emearld st'
 }));
 ```
-Question 21: [Travesing DOM] (http://www.javascriptcookbook.com/article/Traversing-DOM-subtrees-with-a-recursive-walk-the-DOM-function/)
+Question 21: Recursively Travesing DOM [Link] (http://www.javascriptcookbook.com/article/Traversing-DOM-subtrees-with-a-recursive-walk-the-DOM-function/)
 
 Question 22: Consecutive 1's in binary
 ```
