@@ -399,18 +399,12 @@ console.log(getColumn(twoDimensionalArray, 1));
 Question 19: Get top N from array
 ```
 function topN(arr, num) {
-
-  let counts = arr.reduce((prev, current) => {
-    prev[current] = (prev[current] || 0) + 1;
-    return prev;
-  }, {});
-
-  let sorted = Object.keys(counts).sort((a, b) => counts[a] - counts[b]);
+  let sorted = arr.sort((a, b) => a - b);
 
   return sorted.slice(sorted.length - num, sorted.length);
 }
 
-console.log(top5([1,8,3,4,5], 2));
+console.log(topN([1,8,3,4,5], 2));  // [5,8]
 ```
 Question 20: Get query params from Object
 ```
@@ -565,3 +559,6 @@ Question 3: CSS slider using animation
 Checkout below repository
 [UI Execrise] (https://github.com/gohilumesh/ui-exercise)
 [UI Image Gallery] (https://github.com/gohilumesh/ui-image-gallery)
+
+
+## Some more interview questions [link](https://github.com/kennymkchan/interview-questions-in-javascript)
