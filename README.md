@@ -52,9 +52,9 @@ Output: 3307
 
 Question 3. How to filter object from Arrays of Objects
 ```
-  let filteredArray = [{name: 'john'},{name: 'kelly'}].filter((value) => { return value.name === 'kelly'});
+let filteredArray = [{name: 'john'},{name: 'kelly'}].filter(value => value.name === 'kelly');
 
-  Filter method return Array of objects
+Filter method return Array of objects
 ```
 
 Question 4. How to replace all the occurrences of string
