@@ -446,9 +446,9 @@ function consecutiveOne(num)  {
   }
   return maxOccurence;
 }
-//1101  = 13
-// 101 = 5
-console.log(consecutiveOne(5));
+//13 = 1101 = 2
+//5 = 101 = 1
+console.log(consecutiveOne(5));  //1
 ```
 Question 23: Spiral travesal of matrix
 ```
@@ -525,8 +525,8 @@ function binarySearch(arr, val) {
 }
 
 
-console.log(binarySearch([-1, 10,22,35,48,56,67], 22));
-console.log(binarySearch([-1, 10,22,35,48,56,67], 27));
+console.log(binarySearch([-1,10,22,35,48,56,67], 22));
+console.log(binarySearch([-1,10,22,35,48,56,67], 27));
 ```
 [More info] (https://www.nczonline.net/blog/2009/09/01/computer-science-in-javascript-binary-search/)
 
@@ -546,8 +546,8 @@ function pascalTriangle(n) {
 console.log(pascalTriangle(2));
 ```
 Question 3: Quick sort Algorithm
-
-[Refer this link] (https://www.nczonline.net/blog/2012/11/27/computer-science-in-javascript-quicksort/)
+[Algorithm] (https://github.com/davidshariff/computer-science/blob/master/Sorting/QuickSort.js)
+[Refer this link for explanation] (https://www.nczonline.net/blog/2012/11/27/computer-science-in-javascript-quicksort/)
 
 ## Widget Question
 
