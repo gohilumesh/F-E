@@ -214,7 +214,7 @@ function reverse(num) {
   return result;
 }
 
-console.log(reverse('12345'));
+console.log(reverse(12345));
 ```
 
 Question 12: Remove Duplicate elements from Array
