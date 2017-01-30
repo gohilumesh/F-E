@@ -235,16 +235,12 @@ console.log(removeDuplicate(ar));
 
 Question 13: Deep copy of object
 ```
-var deepExtend = function(out) {
-  out = out || {};
-
-  for (var i = 1; i < arguments.length; i++) {
-    var obj = arguments[i];
-
+let deepExtend = function(out = {}) {
+  for (let obj of arguments) {
     if (!obj)
       continue;
 
-    for (var key in obj) {
+    for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
         if (typeof obj[key] === 'object')
           out[key] = deepExtend(out[key], obj[key]);
@@ -257,7 +253,9 @@ var deepExtend = function(out) {
   return out;
 };
 
-deepExtend({}, objA, objB);
+console.log(deepExtend({}, {a:1, b:{c:2, d:3}},
+                           {e:4, b:{f:1}}
+          ));
 ```
 [more info](http://youmightnotneedjquery.com/)
 
