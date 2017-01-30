@@ -498,6 +498,31 @@ function mergeSortedArray(arr1, arr2) {
 console.log(mergeSortedArray([1,2,3,4,5,6], [0, 3,4,7]));
 ```
 
+Question 25: Anagram of words
+```
+const words = ['map', 'art', 'how', 'rat', 'tar', 'who', 'pam', 'shoop'];
+
+function alphabetize(word) {
+  return word.split('').sort().join('');
+}
+
+function anagramGrouper(words) {
+  let anagrams = {};
+  for (let word of words) {
+     const sortedWord = alphabetize(word);
+     if (anagrams[sortedWord]) {
+        anagrams[sortedWord].push(word);
+     } else {
+        anagrams[sortedWord] = [word];
+     }
+  }
+
+  return anagrams;
+}
+
+console.log(anagramGrouper(words));
+```
+
 ## Algorithm
 
 Question 1: Binary Search  [Array should be sorted]
