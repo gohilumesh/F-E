@@ -236,7 +236,8 @@ console.log(removeDuplicate(ar));
 Question 13: Deep copy of object
 ```
 let deepExtend = function(out = {}) {
-  for (let obj of arguments) {
+  for (let i = 1; i < arguments.length; i++) {
+    var let = arguments[i];
     if (!obj)
       continue;
 
