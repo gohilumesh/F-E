@@ -457,7 +457,46 @@ function consecutiveOne(num)  {
 // 101 = 5
 console.log(consecutiveOne(5));
 ```
+Question 23: Spiral travesal of matrix
+```
+var input = [[1,  2,   3,  4],
+             [5,  6,   7,  8],
+             [9,  10, 11, 12],
+             [13, 14, 15, 16]];
 
+var spiralTraversal = function(matriks){
+  let result = [];
+    var goAround = function(matrix) {
+        if (matrix.length == 0) {
+            return;
+        }
+
+        // right
+        result = result.concat(matrix.shift());
+
+        // down
+        for (var j=0; j < matrix.length - 1; j++) {
+            result.push(matrix[j].pop());
+        }
+
+        // bottom
+        result = result.concat(matrix.pop().reverse());
+
+        // up
+        for (var k=matrix.length-1; k > 0; k--) {
+            result.push(matrix[k].shift());
+        }
+
+        return goAround(matrix);
+    };
+
+    goAround(matriks);
+
+    return result;
+};
+console.log(spiralTraversal(input)); // [1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10]
+
+```
 ## Algorithm
 
 Question 1: Binary Search  [Array should be sorted]
