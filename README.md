@@ -21,8 +21,8 @@ function isObject(obj) {
 Question 2. Given and object and property path. Get value from property path
 ```
 function getPropertyValue(TEMP_OBJECT, path) {
-  return path.split('.').reduce((prev, current) => {
-      return prev ? prev[current] : undefined;
+  return path.split('.').reduce((prev, key) => {
+      return prev ? prev[key] : undefined;
     }, TEMP_OBJECT)
 }
 
@@ -521,6 +521,21 @@ function anagramGrouper(words) {
 }
 
 console.log(anagramGrouper(words));
+```
+Question 26: Print the largest (maximum) hourglass sum found in 2d array.
+```
+function main(arr) {
+    let maxScore = -999;
+    for (let i =0; i< 4; i++){
+        for (let j =0; j< 4; j++){
+            let total = arr[i][j] + arr[i][j + 1] + arr[i][j + 2]  +arr[i+1][j + 1]+ arr[i+2][j] + arr[i+2][j +1] + arr[i+2][j + 2];
+
+            maxScore = Math.max(maxScore, total)
+        }
+    }
+    console.log(maxScore);
+}
+
 ```
 
 ## Algorithm
