@@ -237,7 +237,7 @@ Question 13: Deep copy of object
 ```
 let deepExtend = function(out = {}) {
   for (let i = 1; i < arguments.length; i++) {
-    var let = arguments[i];
+    let obj = arguments[i];
     if (!obj)
       continue;
 
