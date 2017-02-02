@@ -524,6 +524,8 @@ console.log(anagramGrouper(words));
 ```
 Question 26: Print the largest (maximum) hourglass sum found in 2d array.
 ```
+// if arr 6 X 6 then iterate it till 4 X 4    [reduce by two]
+// if arr 8 X 8 then iterate it till 6 X 6    [reduce by two]
 function main(arr) {
     let maxScore = -999;
     for (let i =0; i< 4; i++){
@@ -535,9 +537,41 @@ function main(arr) {
     }
     console.log(maxScore);
 }
-
 ```
+Question 27:  Transform array of object to array
+```
+var data = [ {"vid":"aaa", "san":12},
+            {"vid":"aaa", "san":18},
+            {"vid":"aaa", "san":2},
+            {"vid":"bbb", "san":33},
+            {"vid":"bbb", "san":44},
+            {"vid":"aaa", "san":100}];
 
+let result = {};
+
+for (let d of data) {
+  let obj = {};
+  if (d.vid in result) {
+    obj = result[d.vid];
+  } else {
+    obj.san = [];
+    obj.vid = d.vid;
+    result[d.vid] = obj
+  }
+  obj.san.push(d.san);
+}
+
+console.log(Object.keys(result).map(key => result[key]));
+
+// Result
+// [[object Object] {
+//   san: [12, 18, 2, 100],
+//   vid: "aaa"
+// }, [object Object] {
+//   san: [33, 44],
+//   vid: "bbb"
+// }]
+```
 ## Algorithm
 
 Question 1: Binary Search  [Array should be sorted]
