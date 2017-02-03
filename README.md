@@ -578,7 +578,12 @@ Question 1: Binary search tree [Add, Remove, find, contain, LCA, toString, toArr
 
 [follow this link](https://gist.github.com/gohilumesh/7b82d88b536c527c12de3d4945db8feb)
 
-Question 1: Binary Search  [Array should be sorted]
+Question 2: Quick sort Algorithm
+[Algorithm] (https://github.com/davidshariff/computer-science/blob/master/Sorting/QuickSort.js)
+[Refer this link for explanation] (https://www.nczonline.net/blog/2012/11/27/computer-science-in-javascript-quicksort/)
+
+
+Question 3: Binary Search  [Array should be sorted]
 ```
 function binarySearch(arr, val) {
 
@@ -608,7 +613,7 @@ console.log(binarySearch([-1,10,22,35,48,56,67], 27));
 ```
 [More info] (https://www.nczonline.net/blog/2009/09/01/computer-science-in-javascript-binary-search/)
 
-Question: 2: Pascal triangle.
+Question: 4: Pascal triangle.
 ```
 function pascalTriangle(n) {
     let last = [1], triangle = [last];
@@ -623,9 +628,6 @@ function pascalTriangle(n) {
 
 console.log(pascalTriangle(2));
 ```
-Question 3: Quick sort Algorithm
-[Algorithm] (https://github.com/davidshariff/computer-science/blob/master/Sorting/QuickSort.js)
-[Refer this link for explanation] (https://www.nczonline.net/blog/2012/11/27/computer-science-in-javascript-quicksort/)
 
 ## Widget Question
 
