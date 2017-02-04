@@ -66,20 +66,15 @@ Question 4. How to replace all the occurrences of string
 Question 5. write a script that returns the number of occurrences of character given a string as input
 ```
 function countCharacters(str) {
-  let count = {};
-  if (str) {
-    let stripStr = str.replace(/ /g, "").toLowerCase(); // remove space convert to lowercase
-    for (let chr of stripStr) {
-      if (count[chr]) {
-        count[chr]++;
-      } else {
-        count[chr] = 1;
-      }
+  return str.replace(/ /g, '').toLowerCase().split('').reduce((p, c) => {
+    if (c in p) {
+      p[c]++;
+    } else {
+      p[c] = 1;
     }
-  }
-  return count;
+    return p;
+  }, {});
 }
-
 console.log(countCharacters("the brown fox jumps over the lazy dog"));
 ```
 
@@ -571,6 +566,26 @@ console.log(Object.keys(result).map(key => result[key]));
 //   san: [33, 44],
 //   vid: "bbb"
 // }]
+```
+Question 28: Create a private variable or private method in object
+```
+let obj = function() {
+  function getPrivateFunction() {
+    console.log('this is private function');
+  }
+  let p = 'You are accessing private variable';
+  return {
+    getPrivateProperty: () => {
+       console.log(p);
+    },
+    callPrivateFunction: getPrivateFunction
+  };
+}();
+
+
+obj.getPrivateValue(); // You are accessing private variable
+console.log('p' in obj);  // false
+obj.callPrivateFunction(); // this is private function
 ```
 ## Algorithm
 
