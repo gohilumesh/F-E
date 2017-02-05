@@ -587,6 +587,23 @@ obj.getPrivateValue(); // You are accessing private variable
 console.log('p' in obj);  // false
 obj.callPrivateFunction(); // this is private function
 ```
+Question 29: Flatten only Array not objects
+```
+function flatten(arr, result =[]) {
+  arr.map(val => {
+    if (Array.isArray(val)) {
+      flatten(val, result);
+    } else {
+      result.push(val);
+    }
+  });
+  return result;
+}
+
+let input = [1, {a: [2, [3]]}, 4, [5,[6]], [[7, ['hi']], 8, 9], 10];
+
+console.log(flatten(input)); // [1, { a: [2, [3]]}, 4, 5, 6, 7, "hi", 8, 9, 10]
+```
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, toString, toArray]
@@ -621,7 +638,6 @@ function binarySearch(arr, val) {
 
   return (arr[middleIndex] === val) ? middleIndex : -1;
 }
-
 
 console.log(binarySearch([-1,10,22,35,48,56,67], 22));
 console.log(binarySearch([-1,10,22,35,48,56,67], 27));
