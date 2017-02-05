@@ -604,6 +604,22 @@ let input = [1, {a: [2, [3]]}, 4, [5,[6]], [[7, ['hi']], 8, 9], 10];
 
 console.log(flatten(input)); // [1, { a: [2, [3]]}, 4, 5, 6, 7, "hi", 8, 9, 10]
 ```
+Question 30: Find max difference between two number in Array
+```
+function maxDifference(arr) {
+  let maxDiff = 0;
+
+  for (let i=0; i< arr.length; i++) {
+    for (let j= i+1; j < arr.length; j++) {
+      let diff = Math.abs(arr[i] - arr[j]);
+      maxDiff = Math.max(maxDiff, diff);
+    }
+  }
+  return maxDiff;
+}
+
+console.log(maxDifference([1,2,4]));  // [1 - 4 ] = 3
+```
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, toString, toArray]
