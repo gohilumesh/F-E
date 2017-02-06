@@ -622,7 +622,7 @@ console.log(maxDifference([1,2,4]));  // [1 - 4 ] = 3
 ```
 ## Algorithm
 
-Question 1: Binary search tree [Add, Remove, find, contain, LCA, toString, toArray]
+Question 1: Binary search tree [Add, Remove, find, contain, LCA, height, toString, toArray]
 
 [follow this link](https://gist.github.com/gohilumesh/7b82d88b536c527c12de3d4945db8feb)
 
