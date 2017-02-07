@@ -233,11 +233,14 @@ Question 13: Deep copy of object
 let deepExtend = function(out = {}) {
   for (let i = 1; i < arguments.length; i++) {
     let obj = arguments[i];
-    if (!obj)
+    if (obj == null) // skip undefined and null [check with double equal not triple]
       continue;
 
+    obj = Object(obj);
+
     for (let key in obj) {
-      if (obj.hasOwnProperty(key)) {
+      // avoid shadow hasownproperty of parent
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
         if (typeof obj[key] === 'object')
           out[key] = deepExtend(out[key], obj[key]);
         else
@@ -249,9 +252,8 @@ let deepExtend = function(out = {}) {
   return out;
 };
 
-console.log(deepExtend({}, {a:1, b:{c:2, d:3}},
-                           {e:4, b:{f:1}}
-          ));
+console.log(deepExtend({}, {a:1, b:{c:2, d:3}}, {e:4, b:{f:1}}));
+//output : { a: 1, b: {c: 2, d: 3, f: 1}, e: 4 }
 ```
 [more info](http://youmightnotneedjquery.com/)
 
