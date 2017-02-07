@@ -505,7 +505,7 @@ function anagramGrouper(words) {
   let anagrams = {};
   for (let word of words) {
      const sortedWord = alphabetize(word);
-     if (anagrams[sortedWord]) {
+     if (sortedWord in anagrams) {
         anagrams[sortedWord].push(word);
      } else {
         anagrams[sortedWord] = [word];
