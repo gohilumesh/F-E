@@ -78,7 +78,7 @@ function countCharacters(str) {
 console.log(countCharacters("the brown fox jumps over the lazy dog"));
 ```
 
-Question 6. write a script that return the number of occurrences of character in "Join the 42..." paragraph example: the letter "j" occurs twice within the paragraph
+Question 6. write a script that return the number of occurrences of a character in paragraph
 
 ```
 function charCount(str, searchChar) {
