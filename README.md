@@ -525,8 +525,9 @@ Question 26: Print the largest (maximum) hourglass sum found in 2d array.
 // if arr 8 X 8 then iterate it till 6 X 6    [reduce by two]
 function main(arr) {
     let maxScore = -999;
-    for (let i =0; i< 4; i++){
-        for (let j =0; j< 4; j++){
+    let len = arr.length;
+    for (let i =0; i< len - 2; i++){
+        for (let j =0; j< len - 2; j++){
             let total = arr[i][j] + arr[i][j + 1] + arr[i][j + 2]  +arr[i+1][j + 1]+ arr[i+2][j] + arr[i+2][j +1] + arr[i+2][j + 2];
 
             maxScore = Math.max(maxScore, total)
@@ -605,6 +606,20 @@ function flatten(arr, result =[]) {
 let input = [1, {a: [2, [3]]}, 4, [5,[6]], [[7, ['hi']], 8, 9], 10];
 
 console.log(flatten(input)); // [1, { a: [2, [3]]}, 4, 5, 6, 7, "hi", 8, 9, 10]
+
+var list1 = [[0, 1], [2, 3], [4, 5]];
+var list2 = [0, [1, [2, [3, [4, [5]]]]]];
+
+function flatten(out) {  // iteratively  
+  let result = out
+  while(result.some(Array.isArray)) {
+    result = [].concat.apply([], result);
+  }
+  return result;
+}
+
+console.log(flatten(list1));  // [0, 1, 2, 3, 4, 5]
+console.log(flatten(list2));  // [0, 1, 2, 3, 4, 5]
 ```
 Question 30: Find max difference between two number in Array
 ```
@@ -621,6 +636,11 @@ function maxDifference(arr) {
 }
 
 console.log(maxDifference([1,2,4]));  // [1 - 4 ] = 3
+```
+Question 31: swap two number in ES6 [destructing]
+```
+let a = 10, b = 5;
+[a,b] = [b,a];
 ```
 ## Algorithm
 
