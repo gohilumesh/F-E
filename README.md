@@ -659,6 +659,35 @@ processData('We promptly judged antique ivory buckles for the next prize'); // p
 processData('We promptly judged antique ivory buckles for the prize'); // Not Pangram
 
 ```
+Question 34: Given two identical DOM trees (not the same one), and a node from one of them find the node in the other one.
+```
+function indexOf(arrLike, target) {
+    return Array.prototype.indexOf.call(arrLike, target);
+}
+
+// Given a node and a tree, extract the nodes path
+function getPath(root, target) {
+    var current = target;
+    var path = [];
+    while(current !== root) {
+        let parentNode = current.parentNode;
+        path.unshift(indexOf(parentNode.childNodes, current));
+        current = parentNode;
+    }
+    return path;
+}
+
+// Given a tree and a path, let's locate a node
+function locateNodeFromPath(root, path) {
+    return path.reduce((currentNode, index) => currentNode.childNodes[index], root);
+}
+
+const rootA = document.querySelector('#root-a');
+const rootB = document.querySelector('#root-b');
+const target = rootA.querySelector('.person__age');
+
+console.log(locateNodeFromPath(rootB, getPath(rootA, target)));
+```
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, height, toString, toArray]
