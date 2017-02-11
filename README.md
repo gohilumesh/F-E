@@ -645,10 +645,15 @@ let a = 10, b = 5;
 
 Question 32: Panagram ? it means all the 26 letters of alphabet are there
 ```
-function processData(input) {
-  let letters = input.replace(/\s/g, '').toLowerCase().split('');
-  let countDistinctLetters = letters.filter(function (x, pos) { return letters.indexOf(x) === pos; }).length;
-  console.log(countDistinctLetters === 26 ? 'pangram' : 'not pangram');
+function panagram(input) {
+  input = input.replace(/ /g, '').toLowerCase().split('');
+  let obj = input.reduce((prev, current) => {
+    if (!(current in prev)) {
+      prev[current] = current;
+    }
+    return prev;
+  }, {});
+  console.log(Object.keys(obj).length === 26 ? "panagram": "not pangram");
 }
 processData('We promptly judged antique ivory buckles for the next prize'); // pangram
 processData('We promptly judged antique ivory buckles for the prize'); // Not Pangram
