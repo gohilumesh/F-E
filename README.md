@@ -642,6 +642,18 @@ Question 31: swap two number in ES6 [destructing]
 let a = 10, b = 5;
 [a,b] = [b,a];
 ```
+
+Question 32: Panagram ? it means all the 26 letters of alphabet are there
+```
+function processData(input) {
+  let letters = input.replace(/\s/g, '').toLowerCase().split('');
+  let countDistinctLetters = letters.filter(function (x, pos) { return letters.indexOf(x) === pos; }).length;
+  console.log(countDistinctLetters === 26 ? 'pangram' : 'not pangram');
+}
+processData('We promptly judged antique ivory buckles for the next prize'); // pangram
+processData('We promptly judged antique ivory buckles for the prize'); // Not Pangram
+
+```
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, height, toString, toArray]
