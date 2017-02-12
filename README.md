@@ -158,22 +158,17 @@ console.log(fibonnaci(7));
 
 // Memoization fibonnaci
 
-let fibonnaci = (function() {
-  let memo = {};
-  return function fib(num) {
+function fibonnaci(num, memo = {}) {
+  if (num in memo) { return memo[num]; };
+  if (num <= 1) { return 1; }
+  return memo[num] = fibonnaci(num - 1, memo) + fibonnaci(num - 2, memo);
+}
 
-    if (memo[num]) return memo[num];
-    if (num <= 1) return 1;
-
-    return memo[num] = fib(num - 1) + fib(num - 2);
-  }
-})();
-
-console.log(fibonnaci(7))
+console.log(fibonnaci(5)) // 8
 ```
 [More info](https://medium.com/developers-writing/fibonacci-sequence-algorithm-in-javascript-b253dc7e320e#.m9ms009bh)
 
-Question 9: Random Number between 5 and 7
+Question 9: Random Number between min and max
 
 ```
 // 5 to 7
