@@ -169,20 +169,21 @@ console.log(fibonnaci(5)) // 8
 [More info](https://medium.com/developers-writing/fibonacci-sequence-algorithm-in-javascript-b253dc7e320e#.m9ms009bh)
 
 Question 9: Random Number between min and max
-
 ```
 // 5 to 7
 let min = 5;
 let max = 7;
-console.log(min + Math.floor(Math.random() * ((max-min)+1)));
+console.log(min + Math.floor(Math.random() * (max-min+1)));
 ```
 
-Question 10: Get HTML form values as json object
+Question 10: Get HTML form values as JSON object
 ```
   // Use the array reduce function with form elements.
   const formToJSON = elements => [].reduce.call(elements, (data, element) => {
     data[element.name] = element.value;
-    //check for multi checkbox and multi select
+    // Check if name and value exist on element
+    // Check if it checkbox or radio button which can select multiple or single
+    //check for multiple select options
     return data;
   }, {});
 
@@ -223,9 +224,9 @@ function removeDuplicate() {
 console.log(removeDuplicate(ar));
 ```
 
-Question 13: Deep copy of object
+Question 13: Deep copy of object or clone of object
 ```
-let deepExtend = function(out = {}) {
+function deepExtend(out = {}) {
   for (let i = 1; i < arguments.length; i++) {
     let obj = arguments[i];
     if (obj == null) // skip undefined and null [check with double equal not triple]
@@ -243,7 +244,6 @@ let deepExtend = function(out = {}) {
       }
     }
   }
-
   return out;
 };
 
@@ -257,14 +257,17 @@ Question 14: Sort ticket based on flying order.
 "use strict";
 
 function SortTickets(tickets) {
-  this.reverseTickets = {}
   this.tickets = tickets;
+
+  // reverse the order of tickets
+  this.reverseTickets = {};
   for (let key in this.tickets) {
     this.reverseTickets[tickets[key]] = key;
   }
 
   // Get the starting point of ticket
   let orderedTivckets =[...this.getStartingPoint()];
+
   // Get the ticket destination.
   let currentValue = orderedTickets[orderedTickets.length -1];
   while(currentValue)  {
@@ -383,20 +386,19 @@ const twoDimensionalArray = [
   [7, 8, 9],
 ];
 
-console.log(getColumn(twoDimensionalArray, 1));
+console.log(getColumn(twoDimensionalArray, 1));   //Result = [2,5,8]
 
-//Result = [2,5,8]
 ```
 Question 19: Get top N from array
 ```
 function topN(arr, num) {
   let sorted = arr.sort((a, b) => a - b);
-
   return sorted.slice(sorted.length - num, sorted.length);
 }
 
 console.log(topN([1,8,3,4,5], 2));  // [5,8]
 ```
+
 Question 20: Get query params from Object
 ```
 function getQueryParams(obj) {
@@ -424,12 +426,12 @@ Question 21: Recursively Travesing DOM [Link] (http://www.javascriptcookbook.com
 Question 22: Consecutive 1's in binary
 ```
 function consecutiveOne(num)  {
-  let binaryArr = num.toString(2);
+  let binaryArray = num.toString(2);
 
   let maxOccurence = 0,
       occurence = 0;
-  for (let i =0; i< binaryArr.length; i++) {
-    if (binaryArr[i] === '1') {
+  for (let val of binaryArray) {
+    if (val === '1') {
       occurence += 1;
       maxOccurence = Math.max(maxOccurence, occurence);
     } else {
@@ -492,32 +494,32 @@ console.log(mergeSortedArray([1,2,3,4,5,6], [0, 3,4,7]));
 
 Question 25: Anagram of words
 ```
-const words = ['map', 'art', 'how', 'rat', 'tar', 'who', 'pam', 'shoop'];
+const alphabetize = word => word.split('').sort().join('');
 
-function alphabetize(word) {
-  return word.split('').sort().join('');
+function groupAnagram(wordsArr) {
+ return wordsArr.reduce((p, c)=> {
+   const sortedWord = alphabetize(c);
+   if (sortedWord in p){
+     p[sortedWord].push(c);
+   } else {
+     p[sortedWord] = [c];
+   }
+   return p;
+ }, {});
 }
 
-function anagramGrouper(words) {
-  let anagrams = {};
-  for (let word of words) {
-     const sortedWord = alphabetize(word);
-     if (sortedWord in anagrams) {
-        anagrams[sortedWord].push(word);
-     } else {
-        anagrams[sortedWord] = [word];
-     }
-  }
-
-  return anagrams;
-}
-
-console.log(anagramGrouper(words));
+console.log(groupAnagram(['map', 'art', 'how', 'rat', 'tar', 'who', 'pam', 'shoop']));
+// result : {
+//  amp: ["map", "pam"],
+//  art: ["art", "rat", "tar"],
+//  hoops: ["shoop"],
+//  how: ["how", "who"]
+// }
 ```
 Question 26: Print the largest (maximum) hourglass sum found in 2d array.
 ```
-// if arr 6 X 6 then iterate it till 4 X 4    [reduce by two]
-// if arr 8 X 8 then iterate it till 6 X 6    [reduce by two]
+// if arr 6 X 6 then iterate it till 4 X 4  [reduce by two]
+// if arr 8 X 8 then iterate it till 6 X 6  [reduce by two]
 function main(arr) {
     let maxScore = -999;
     let len = arr.length;
@@ -606,7 +608,7 @@ var list1 = [[0, 1], [2, 3], [4, 5]];
 var list2 = [0, [1, [2, [3, [4, [5]]]]]];
 
 function flatten(out) {  // iteratively  
-  let result = out
+  let result = out;
   while(result.some(Array.isArray)) {
     result = [].concat.apply([], result);
   }
