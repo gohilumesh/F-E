@@ -685,6 +685,22 @@ const target = rootA.querySelector('.person__age');
 
 console.log(locateNodeFromPath(rootB, getPath(rootA, target)));
 ```
+Question 35: Convert a number into a Roman Numeral
+```
+function romanize(num) {
+  let lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
+      roman = '';
+  for ( let i in lookup ) {
+    while ( num >= lookup[i] ) {
+      roman += i;
+      num -= lookup[i];
+    }
+  }
+  return roman;
+}
+
+console.log(romanize(3)); // III
+```
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, height, toString, toArray]
