@@ -701,9 +701,36 @@ function romanize(num) {
 
 console.log(romanize(3)); // III
 ```
+Question 36: check if parenthesis is malformed or not
+```
+function matchParenthesis(str) {
+  let obj = {'{': '}', '(': ')', '[':']'};
+  let result = [];
+  for (let s of str) {
+    if (s === '{' || s === '(' || s === '[') { // All opening brackets
+      result.push(s);
+    } else {
+      if (result.length > 0) {
+        let lastValue = result.pop(); //pop the last value and compare with key
+        if (obj[lastValue] !== s) { // if it is not same then it is not formated properly
+          return false;
+        }
+      } else {
+        return false;  // empty array, there is nothing to pop. so it is not formated properly
+      }
+    }
+  }
+  return result.length === 0;
+}
+
+console.log(matchParenthesis('}{{}}'), matchParenthesis('{{[]}}')); // false - true  
+```
+Question 37: shuffling an array in place.
+[click for more info](https://www.frankmitchell.org/2015/01/fisher-yates/)
+
 ## Algorithm
 
-Question 1: Binary search tree [Add, Remove, find, contain, LCA, height, toString, toArray]
+Question 1: Binary search tree [Add, Remove, find, contain, LCA, balanced?, height, toString, toArray]
 
 [follow this link](https://gist.github.com/gohilumesh/7b82d88b536c527c12de3d4945db8feb)
 
