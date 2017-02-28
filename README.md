@@ -728,6 +728,29 @@ console.log(matchParenthesis('}{{}}'), matchParenthesis('{{[]}}')); // false - t
 Question 37: shuffling an array in place.
 [click for more info](https://www.frankmitchell.org/2015/01/fisher-yates/)
 
+Question 38: Create Custom Event Emitter class
+```
+function EventEmitter() {
+  this.list = {};
+}
+
+EventEmitter.prototype.on = function(name, callback) {
+  this.list[name] = callback;
+}
+
+EventEmitter.prototype.emit = function(name, ...args) {
+  let c = this.list[name];
+  c.call(null, args);
+}
+
+let e = new EventEmitter();
+
+e.on('callme', function(args) {
+  console.log(`you called me ${args}`);
+});
+
+e.emit('callme', ['a','b'], {firstName: 'umesh', lastName: 'gohil'});
+```
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, balanced?, height, toString, toArray]
