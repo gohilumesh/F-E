@@ -759,6 +759,35 @@ Math.max(...arr);   // Fastest
 
 Math.max.apply(Math, arr); // Slow
 ```
+Question 40: DOM methods
+```
+var el = document.querySelector('div');
+el.childNodes;   // get the list of child nodes of el
+el.firstChild;   // get the first child node of el
+el.lastChild;    // get the last child node of el
+el.parentNode;   // get the parent node of el
+el.previousSibling;    // get the previous sibling of el
+el.nextSibling;  // get the next sibling of el
+el.textContent;  // get the text content of el
+el.innerHTML;    // get the inner html of el
+
+document.createElement('div')  // create dom element
+document.creatTextNode('Hello world');  // create text node
+document.createDocumentFragment();
+
+el.appendChild(); //append child to el;
+el.insertBefore(); // insert child before el;
+el.parentNode.replaceChild(NEW_NODE, REPLACE_ME)  // replace the node
+el.removechild();  // remove the child node
+
+Array.from(NODES) // convert nodelist to regular array
+
+el.classList[contains | add | remove | replace]  // class of el
+
+el.setAttribute | el.getAttribute | el.removeAttribute // attributes of el
+
+el.style    // get the style of el
+```
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, balanced?, height, toString, toArray]
