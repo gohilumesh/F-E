@@ -247,6 +247,9 @@ function deepExtend(out = {}) {
   return out;
 };
 
+//Alternative if there are no function
+let cloneObj = JSON.parse(JSON.stringify(obj));
+
 console.log(deepExtend({}, {a:1, b:{c:2, d:3}}, {e:4, b:{f:1}}));
 //output : { a: 1, b: {c: 2, d: 3, f: 1}, e: 4 }
 ```
@@ -324,8 +327,6 @@ concurrent.prototype.start = function() {
     }
   }
 };
-
-
 
 let callback = (done) => {
   console.log('starting');
