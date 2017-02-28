@@ -754,11 +754,10 @@ e.emit('callme', ['a','b'], {firstName: 'umesh', lastName: 'gohil'});
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, balanced?, height, toString, toArray]
-
 [follow this link](https://gist.github.com/gohilumesh/7b82d88b536c527c12de3d4945db8feb)
 
 Question 2: Quick sort Algorithm
-[Algorithm] (https://github.com/davidshariff/computer-science/blob/master/Sorting/QuickSort.js)
+[Link](https://github.com/davidshariff/computer-science/blob/master/Sorting/QuickSort.js)
 [Refer this link for explanation] (https://www.nczonline.net/blog/2012/11/27/computer-science-in-javascript-quicksort/)
 
 
@@ -818,6 +817,8 @@ Question 2: Design visual display of list, And implement feature to add it to li
 Question 3: CSS slider using animation
 [Checkout Github gist link] (https://gist.github.com/gohilumesh/7359d812050c036518a75314ad6f9f6d)
 
+Question 4: CSS Start Widget
+[Checkout Github gist link](https://gist.github.com/gohilumesh/64b589366607e99b8d96e6867d42698c)
 
 ## React coding test.
 
