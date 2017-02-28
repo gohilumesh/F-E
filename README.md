@@ -751,6 +751,13 @@ e.on('callme', function(args) {
 
 e.emit('callme', ['a','b'], {firstName: 'umesh', lastName: 'gohil'});
 ```
+Question 39: Max value from an array
+```
+const arr = [-2, -3, 4, 3, 2, 1];
+Math.max(...arr);   // Fastest
+
+Math.max.apply(Math, arr); // Slow
+```
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, balanced?, height, toString, toArray]
@@ -764,22 +771,17 @@ Question 2: Quick sort Algorithm
 Question 3: Binary Search  [Array should be sorted]
 ```
 function binarySearch(arr, val) {
-
   let startIndex = 0,
       stopIndex = arr.length -1,
       middleIndex = Math.floor((startIndex + stopIndex) / 2);
 
-
   while(arr[middleIndex] !== val && startIndex < stopIndex){
-
     if (val < arr[middleIndex]){
       stopIndex = middleIndex - 1;
     } else if (val > arr[middleIndex]){
        startIndex = middleIndex + 1;
     }
-
     middleIndex = Math.floor((startIndex + stopIndex) / 2);
-
   }
 
   return (arr[middleIndex] === val) ? middleIndex : -1;
