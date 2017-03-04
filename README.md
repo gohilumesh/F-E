@@ -364,11 +364,7 @@ console.log(reverse);
 
 Question 17: Rotate 2D array
 ```
-function transpose(arr) {
-  return arr[0].map((col, i) => {
-    return arr.map(row => row[i]);
-  });
-}
+const transpose = arr => arr[0].map((col, i) => arr.map(row => row[i]));
 
 console.log(transpose([
   [1, 2, 3, 4],
@@ -388,7 +384,6 @@ const twoDimensionalArray = [
 ];
 
 console.log(getColumn(twoDimensionalArray, 1));   //Result = [2,5,8]
-
 ```
 Question 19: Get top N from array
 ```
@@ -410,7 +405,6 @@ function getQueryParams(obj) {
         parms +='&';
       }
       parms += encodeURI(`${key}=${obj[key]}`);
-
     }
   }
   return parms;
@@ -455,7 +449,7 @@ var input = [[1,  2,   3,  4],
 var spiralTraversal = function(matriks){
   let result = [];
     var goAround = function(matrix) {
-        if (matrix.length == 0) {
+        if (matrix.length === 0) {
             return;
         }
 
@@ -490,7 +484,7 @@ function mergeSortedArray(arr1, arr2) {
   return [...new Set(arr1.concat(arr2))].sort((a, b) => a - b);
 }
 
-console.log(mergeSortedArray([1,2,3,4,5,6], [0, 3,4,7]));
+console.log(mergeSortedArray([1,2,3,4,5,6], [0, 3,4,7])); // [0, 1, 2, 3, 4, 5, 6, 7]
 ```
 
 Question 25: Anagram of words
@@ -726,7 +720,7 @@ function matchParenthesis(str) {
 
 console.log(matchParenthesis('}{{}}'), matchParenthesis('{{[]}}')); // false - true  
 ```
-Question 37: shuffling an array in place.
+Question 37: shuffling an array in place. (Fisher-Yates shuffle)
 [click for more info](https://www.frankmitchell.org/2015/01/fisher-yates/)
 
 Question 38: Create Custom Event Emitter class
@@ -787,6 +781,61 @@ el.classList[contains | add | remove | replace]  // class of el
 el.setAttribute | el.getAttribute | el.removeAttribute // attributes of el
 
 el.style    // get the style of el
+```
+Question 41: search function called after 500 ms
+```
+<input type="text" class="search" />
+
+let timer = null;
+function searchOptions(value){
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    console.log(`value is - ${value}`)
+  }, 500);
+}
+
+let search= document.querySelector('.search');
+search.addEventListener('keyup', function() {
+  searchOptions(this.value);
+});
+```
+Question 42: Debounce function  -- similar to question 41, but here we create closure
+```
+function debounce(callback, wait) {
+  let timer = null,
+      callbackArgs = null,
+      context = this;
+
+  const later = () => callback.apply(context, callbackArgs);
+
+  return function() {
+    callbackArgs = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(later, wait);
+  }
+}
+
+let handleClicked = debounce(() => {
+  console.log(`you clicked me`);
+}, 500);
+
+document.addEventListener('click', handleClicked);
+```
+Question 43: Move all zero's to end
+```
+const moveZeroToEnd = arr => {
+  for (let i = 0, j = 0; j < arr.length; j++) {
+    if (arr[j] !== 0) {
+      if (i < j) {
+        [arr[i], arr[j]] = [arr[j], arr[i]]  // swap i and j
+      }
+      i++;
+    }
+  }
+  return arr;
+}
+
+console.log(moveZeroToEnd([1, 8, 2, 0, 0, 0, 3, 4, 0, 5, 0]));  // [1, 8, 2, 3, 4, 5, 0, 0, 0, 0, 0]
 ```
 ## Algorithm
 
