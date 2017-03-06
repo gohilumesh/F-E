@@ -837,6 +837,83 @@ const moveZeroToEnd = arr => {
 
 console.log(moveZeroToEnd([1, 8, 2, 0, 0, 0, 3, 4, 0, 5, 0]));  // [1, 8, 2, 3, 4, 5, 0, 0, 0, 0, 0]
 ```
+Question 44: Decode message in matrix [diagional down right, diagional up right]
+```
+function decodeMessage(matrix) {
+  let result = '';
+  let decode = function(matrix, i = 0, j = 0) {
+
+    // check if matrix is null or empty
+    if (matrix === null || matrix.length === 0) {
+      return;
+    }
+
+    result += matrix[i][j];
+
+    //check the boundary of matrix with i and j
+    let {x, y} = {x : matrix.length,
+             y : matrix[0].length};
+
+    if ((i + 1) === x){
+      i -= 1;
+    } else {
+      i += 1;
+    }
+
+    j += 1;
+
+    //reached end, done with matrix
+    if (j === y) {
+      return;
+    }
+    // if reached here, still need to process the matrix
+    decode(matrix, i, j);
+  }
+
+  decode(matrix);
+  return result;
+}
+
+let mat = [
+  ['I','B','C','A','L','K','A'],
+  ['D','R','F','C','A','E','A'],
+  ['G','H','O','E','L','A','D']  
+];
+
+console.log(decodeMessage(mat));  //IROCLED
+```
+Question 45 : find a pair in array, whose sum is equal to given number.
+```
+function hasPairWithSum(arr, sum) {  
+  //Array length cannot be less then 2
+  if (arr.length < 2) {
+    return null;
+  }
+
+  let left = 0,
+      right = arr.length -1;
+
+  while(true) {
+    let pairSum = arr[left] + arr[right];
+    if (pairSum < sum) {
+      left += 1;
+    } else if (pairSum > sum) {
+      right -= 1;
+    } else {
+      return [left, right]
+    }
+
+    if (left === right) {
+      break;
+    }
+  }
+  return null;
+}
+
+//Array is sorted
+console.log(hasPairWithSum([1,2,4,5], 8)); // null
+console.log(hasPairWithSum([1,2,4,4], 8)); // [2,3]
+```
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, balanced?, height, toString, toArray]
