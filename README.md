@@ -596,22 +596,45 @@ function flatten(arr, result =[]) {
 }
 
 let input = [1, {a: [2, [3]]}, 4, [5,[6]], [[7, ['hi']], 8, 9], 10];
-
 console.log(flatten(input)); // [1, { a: [2, [3]]}, 4, 5, 6, 7, "hi", 8, 9, 10]
 
-var list1 = [[0, 1], [2, 3], [4, 5]];
-var list2 = [0, [1, [2, [3, [4, [5]]]]]];
-
-function flatten(out) {  // iteratively  
+function flattenIterative(out) {  // iteratively  
   let result = out;
   while(result.some(Array.isArray)) {
     result = [].concat.apply([], result);
   }
   return result;
 }
+var list1 = [[0, 1], [2, 3], [4, 5]];
+console.log(flattenIterative(list1));  // [0, 1, 2, 3, 4, 5]
 
-console.log(flatten(list1));  // [0, 1, 2, 3, 4, 5]
-console.log(flatten(list2));  // [0, 1, 2, 3, 4, 5]
+function flattenIterative1(arr) {
+  let current = arr;
+  let rest = [];
+  let result = [];
+  while(current.length > 0) {
+    let firstValue = current.shift();
+
+    if (Array.isArray(firstValue)) {      
+      if (current.length > 0) {
+        rest.push(current);
+      }
+      current = firstValue;
+    } else {
+      result.push(firstValue);
+    }
+
+    if (current.length === 0 && rest.length > 0) {
+      current = rest.pop();
+    }
+  }
+  return result;
+}
+
+let input = [1, {a: [2, [3]]}, 4, [5,[6]], [[7, ['hi']], 8, 9], 10];
+console.log(flattenIterative1(input));
+var list2 = [0, [1, [2, [3, [4, [5]]]]]];
+console.log(flattenIterative1(list2));  // [0, 1, 2, 3, 4, 5]
 ```
 Question 30: Find max difference between two number in Array
 ```
@@ -893,7 +916,7 @@ function hasPairWithSum(arr, sum) {
   let left = 0,
       right = arr.length -1;
 
-  while(true) {
+  while(left < high) {
     let pairSum = arr[left] + arr[right];
     if (pairSum < sum) {
       left += 1;
@@ -901,10 +924,6 @@ function hasPairWithSum(arr, sum) {
       right -= 1;
     } else {
       return [left, right]
-    }
-
-    if (left === right) {
-      break;
     }
   }
   return null;
@@ -914,6 +933,8 @@ function hasPairWithSum(arr, sum) {
 console.log(hasPairWithSum([1,2,4,5], 8)); // null
 console.log(hasPairWithSum([1,2,4,4], 8)); // [2,3]
 ```
+Question 46 : Heron's Sqrt root Algorithm
+[Link](http://cwestblog.com/2012/10/11/javascript-herons-square-root-algorithm/)
 ## Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, balanced?, height, toString, toArray]
