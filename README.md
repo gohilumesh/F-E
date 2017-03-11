@@ -877,13 +877,10 @@ function decodeMessage(matrix) {
     let {x, y} = {x : matrix.length,
              y : matrix[0].length};
 
-    if ((i + 1) === x){
-      i -= 1;
-    } else {
-      i += 1;
-    }
+    // if reach the boundary then reverse the direction or continue in that direction
+    ((i + 1) === x) ? i-- : i++;
 
-    j += 1;
+    j++;
 
     //reached end, done with matrix
     if (j === y) {
