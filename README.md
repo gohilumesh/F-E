@@ -863,19 +863,18 @@ console.log(moveZeroToEnd([1, 8, 2, 0, 0, 0, 3, 4, 0, 5, 0]));  // [1, 8, 2, 3, 
 Question 44: Decode message in matrix [diagional down right, diagional up right]
 ```
 function decodeMessage(matrix) {
-  let result = '';
-  let decode = function(matrix, i = 0, j = 0) {
+  // check if matrix is null or empty
+  if (matrix === null || matrix.length === 0) {
+    return '';
+  }
 
-    // check if matrix is null or empty
-    if (matrix === null || matrix.length === 0) {
-      return;
-    }
-
-    result += matrix[i][j];
-
-    //check the boundary of matrix with i and j
-    let {x, y} = {x : matrix.length,
+  let result = '',
+      //set the boundary of matrix
+      {x, y} = {x : matrix.length,
              y : matrix[0].length};
+
+  let decode = function(matrix, i = 0, j = 0) {
+    result += matrix[i][j];
 
     // if reach the boundary then reverse the direction or continue in that direction
     ((i + 1) === x) ? i-- : i++;
