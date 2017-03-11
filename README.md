@@ -928,6 +928,8 @@ function hasPairWithSum(arr, sum) {
 //Array is sorted
 console.log(hasPairWithSum([1,2,4,5], 8)); // null
 console.log(hasPairWithSum([1,2,4,4], 8)); // [2,3]
+NOTE: if array is not sorted then subract the value with sum and store in difference
+// then see if that value exist in difference then return true.
 ```
 Question 46 : Heron's Sqrt root Algorithm
 [Link](http://cwestblog.com/2012/10/11/javascript-herons-square-root-algorithm/)
