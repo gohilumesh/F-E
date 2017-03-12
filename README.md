@@ -616,16 +616,9 @@ function flattenIterative1(arr) {
     let firstValue = current.shift();
 
     if (Array.isArray(firstValue)) {      
-      if (current.length > 0) {
-        rest.push(current);
-      }
-      current = firstValue;
+      current = firstValue.concat(current);
     } else {
       result.push(firstValue);
-    }
-
-    if (current.length === 0 && rest.length > 0) {
-      current = rest.pop();
     }
   }
   return result;
