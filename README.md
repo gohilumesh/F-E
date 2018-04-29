@@ -26,7 +26,7 @@ function getPropertyValue(TEMP_OBJECT, path) {
     }, TEMP_OBJECT)
 }
 
-Input :
+//Input :
 let srcObject = {
     'system' : {
         'database' : {
@@ -36,17 +36,17 @@ let srcObject = {
              },
               '1' : {
                 'host' : '54.232.123',
-                'port' : 3307
              },
+             'port' : 3307
               '2' : {
                 'host' : '54.232.123',
              }
        }
    }
 },
-path = system.database.1.port;
+path = "system.database.1.port";
 
-Output: 3307
+//Output: 3307
 ```
 [more options](http://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-with-string-key)
 
@@ -998,3 +998,14 @@ Checkout below repository
 
 
 ## Some more interview questions [link](https://github.com/kennymkchan/interview-questions-in-javascript)
+
+## What happen when you click a link or request a page in browser
+- Brower checks DNS cache to find ip address.
+- if not find then check os, router, ISP cache to find ip address.
+- if not find then isp dns server initiates DNS query to find ip address.
+- Once you get ip address, browser will try to establish TCP connection with server
+- Browser send http request to server.
+- Server handles the request and return the response.
+- server sends out http response.
+- Browser display HTML content.
+[link](https://medium.com/@maneesha.wijesinghe1/what-happens-when-you-type-an-url-in-the-browser-and-press-enter-bb0aa2449c1a)
