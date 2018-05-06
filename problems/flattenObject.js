@@ -2,9 +2,10 @@ let obj = {
   "a": {
     "b": {
       "c": 12,
-      "d": "Hello World"
+      "d": "Hello World",
+      "e": null
     },
-    "e": [1,2,3]
+    "f": [1,2,3]
   }
 };
 
@@ -12,7 +13,7 @@ const flatten = (obj, parentkey) => {
   return Object.keys(obj).reduce((acc, key) => {
 
     let val = obj[key];
-    if (typeof val === "object" && !Array.isArray(val)) {
+    if (typeof val === "object" && !Array.isArray(val) && val != null) { // undefined and null are object
       let flat = flatten(val, key);
       if (parentkey) {
         for (let i in flat) {
@@ -34,7 +35,8 @@ const flatten = (obj, parentkey) => {
 console.log(flatten(obj));
 
 // {
-//   "a/b/c": 12,
-//   "a/b/d": "Hello World",
-//   "a/e": [1,2,3]
+//   a/b/c: 12,
+//   a/b/d: "Hello World",
+//   a/b/e: null,
+//   a/f: [1, 2, 3]
 // }

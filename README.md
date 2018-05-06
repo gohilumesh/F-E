@@ -196,8 +196,7 @@ Question 11: Reverse the number
 ```
 function reverse(num) {
   let result = 0;
-  while( num != 0 )
-  {
+  while( num != 0 ) {
      result = result * 10;
      result = result + num % 10;
      num = Math.floor( num / 10 );   
@@ -237,7 +236,7 @@ function deepExtend(out = {}) {
     for (let key in obj) {
       // avoid shadow hasownproperty of parent
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        if (typeof obj[key] === 'object')
+        if (typeof obj[key] === 'object' && !Array.isArray(obj[key]) && obj[key] != null)
           out[key] = deepExtend(out[key], obj[key]);
         else
           out[key] = obj[key];
@@ -530,28 +529,20 @@ function main(arr) {
 ```
 Question 27:  Transform array of object to array
 ```
-var data = [ {"vid":"aaa", "san":12},
+let data = [ {"vid":"aaa", "san":12},
             {"vid":"aaa", "san":18},
             {"vid":"aaa", "san":2},
             {"vid":"bbb", "san":33},
             {"vid":"bbb", "san":44},
             {"vid":"aaa", "san":100}];
 
-let result = {};
+let newData = data.reduce((acc, item) => {
+  acc[item.vid] = acc[item.vid] || {vid: item.vid, san: []};
+  acc[item.vid]["san"].push(item.san);
+  return acc;  
+}, {});
 
-for (let d of data) {
-  let obj = {};
-  if (d.vid in result) {
-    obj = result[d.vid];
-  } else {
-    obj.san = [];
-    obj.vid = d.vid;
-    result[d.vid] = obj
-  }
-  obj.san.push(d.san);
-}
-
-console.log(Object.keys(result).map(key => result[key]));
+console.log(Object.keys(newData).map(key => newData[key]));
 
 // Result
 // [[object Object] {
@@ -585,7 +576,7 @@ obj.callPrivateFunction(); // this is private function
 Question 29: Flatten only Array not objects
 ```
 function flatten(arr, result =[]) {
-  arr.map(val => {
+  arr.forEach(val => {
     if (Array.isArray(val)) {
       flatten(val, result);
     } else {
@@ -654,6 +645,13 @@ let a = 10, b = 5;
 Question 32: Panagram ? it means all the 26 letters of alphabet are there
 ```
 function panagram(input) {
+  if (input == null) {  // Check for null and undefined
+    return false
+  }
+
+  if (input.length < 26) { // if length is less then 26 then it is not
+    return false;
+  }
   input = input.replace(/ /g, '').toLowerCase().split('');
   let obj = input.reduce((prev, current) => {
     if (!(current in prev)) {
@@ -686,8 +684,8 @@ function getPath(root, target) {
 }
 
 // Given a tree and a path, let's locate a node
-function locateNodeFromPath(root, path) {
-    return path.reduce((currentNode, index) => currentNode.childNodes[index], root);
+function locateNodeFromPath(node, path) {
+    return path.reduce((root, index) => root.childNodes[index], node);
 }
 
 const rootA = document.querySelector('#root-a');
@@ -855,7 +853,7 @@ console.log(moveZeroToEnd([1, 8, 2, 0, 0, 0, 3, 4, 0, 5, 0]));  // [1, 8, 2, 3, 
 ```
 Question 44: Decode message in matrix [diagional down right, diagional up right]
 ```
-function decodeMessage(matrix) {
+const decodeMessage = (matrix) => {
   // check if matrix is null or empty
   if (matrix === null || matrix.length === 0) {
     return '';
@@ -863,14 +861,18 @@ function decodeMessage(matrix) {
 
   let result = '',
       //set the boundary of matrix
-      {x, y} = {x : matrix.length,
-             y : matrix[0].length};
+      x = matrix.length,
+      y = matrix[0].length;
 
-  let decode = function(matrix, i = 0, j = 0) {
+  let decode = function(matrix, i = 0, j = 0, direction = 'down') {
     result += matrix[i][j];
 
+    if ((i + 1) === x) {
+      direction = 'up';
+    }
+
     // if reach the boundary then reverse the direction or continue in that direction
-    ((i + 1) === x) ? i-- : i++;
+    (direction === 'down') ? i++ : i--;
 
     j++;
 
@@ -879,7 +881,7 @@ function decodeMessage(matrix) {
       return;
     }
     // if reached here, still need to process the matrix
-    decode(matrix, i, j);
+    decode(matrix, i, j, direction);
   }
 
   decode(matrix);
@@ -889,10 +891,11 @@ function decodeMessage(matrix) {
 let mat = [
   ['I','B','C','A','L','K','A'],
   ['D','R','F','C','A','E','A'],
-  ['G','H','O','E','L','A','D']  
+  ['G','H','O','E','L','A','D'],
+  ['G','H','O','E','L','A','D']    
 ];
 
-console.log(decodeMessage(mat));  //IROCLED
+console.log(decodeMessage(mat));  //IROELEA
 ```
 Question 45 : find a pair in array, whose sum is equal to given number.
 ```
@@ -940,7 +943,7 @@ Question 3: Binary Search  [Array should be sorted]
 ```
 function binarySearch(arr, val) {
   let startIndex = 0,
-      stopIndex = arr.length -1,
+      stopIndex = arr.length - 1,
       middleIndex = Math.floor((startIndex + stopIndex) / 2);
 
   while(arr[middleIndex] !== val && startIndex < stopIndex){
