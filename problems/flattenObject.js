@@ -11,21 +11,22 @@ let obj = {
 
 const flatten = (obj, parentkey) => {
   return Object.keys(obj).reduce((acc, key) => {
-
-    let val = obj[key];
-    if (typeof val === "object" && !Array.isArray(val) && val != null) { // undefined and null are object
-      let flat = flatten(val, key);
-      if (parentkey) {
-        for (let i in flat) {
-          let k = `${parentkey}/${i}`;
-          acc[k] = flat[i];
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      let val = obj[key];
+      if (typeof val === "object" && !Array.isArray(val) && val != null) { // != will catch undefined or null
+        let flat = flatten(val, key);
+        if (parentkey) {
+          for (let i in flat) {
+            let k = `${parentkey}/${i}`;
+            acc[k] = flat[i];
+          }
+        } else {
+          acc = flat;
         }
       } else {
-        acc = flat;
+        let prop = parentkey ? `${parentkey}/${key}` : key;
+        acc[prop] = val;
       }
-    } else {
-      let prop = parentkey && `${parentkey}/${key}` || key;
-      acc[prop] = val;
     }
     return acc;
   }, {});

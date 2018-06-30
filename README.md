@@ -13,7 +13,7 @@ function isEmpty(TEMP_OBJECT) {
 Question 1.1 Check it is object or not
 ```
 function isObject(obj) {
-  return (typeof obj === "object" && !Array.isArray(obj) && obj !== null);
+  return (typeof obj === "object" && !Array.isArray(obj) && obj != null);
 }
 ```
 [more info](http://stackoverflow.com/questions/8511281/check-if-a-value-is-an-object-in-javascript)
@@ -79,7 +79,6 @@ console.log(countCharacters("the brown fox jumps over the lazy dog"));
 ```
 
 Question 6. write a script that return the number of occurrences of a character in paragraph
-
 ```
 function charCount(str, searchChar) {
   let count = 0;
@@ -209,25 +208,40 @@ console.log(reverse(12345));
 
 Question 12: Remove Duplicate elements from Array
 ```
-var ar = [1, 2, 3, 5, 1, 5, 9, 1, 2, 8];
+var arr = [1, 2, 3, 5, 1, 5, 9, 1, 2, 8];
 function removeDuplicate() {
   return ar.reduce((prev, current) => {
     //Cannot use includes of array, since it is not supported by many browser
-    if (prev.indexOf(current) === -1){
+    if (prev.indexOf(current) === -1) {
       prev.push(current);
     }
     return prev;
   }, []);
 }
-
 console.log(removeDuplicate(ar));
+
+const removeDuplicates = (arr) => {
+  let holder = {};
+  return arr.filter(el => {
+    if (!holder[el]){
+      holder[el] = true;
+      return true;
+    }
+    return false;
+  });
+};
+const arr = [1, 2, 3, 5, 1, 5, 9, 1, 2, 8];
+console.log(removeDuplicates(arr)); // ["1", "2", "3", "5", "8", "9"] // O(n)
+
+// Es6
+console.log([...new Set(arr)]);
 ```
 
 Question 13: Deep copy of object or clone of object
 ```
 function deepExtend(out = {}) {
   for (let i = 1; i < arguments.length; i++) {
-    let obj = arguments[i];
+      let obj = arguments[i];
     if (obj == null) // skip undefined and null [check with double equal not triple]
       continue;
 
@@ -599,13 +613,10 @@ function flattenIterative(out) {  // iteratively
 var list1 = [[0, 1], [2, 3], [4, 5]];
 console.log(flattenIterative(list1));  // [0, 1, 2, 3, 4, 5]
 
-function flattenIterative1(arr) {
-  let current = arr;
-  let rest = [];
+function flattenIterative1(current) {
   let result = [];
-  while(current.length > 0) {
+  while(current.length) {
     let firstValue = current.shift();
-
     if (Array.isArray(firstValue)) {      
       current = firstValue.concat(current);
     } else {
@@ -739,23 +750,32 @@ Question 37: shuffling an array in place. (Fisher-Yates shuffle)
 
 Question 38: Create Custom Event Emitter class
 ```
-function EventEmitter() {
-  this.list = {};
-}
+class EventEmitter {
+  constructor() {
+    this.holder = {};
+  }
 
-EventEmitter.prototype.on = function(name, callback) {
-  this.list[name] = callback;
-}
+  on(eventName, fn) {
+    if (eventName && typeof fn === "function") {
+      this.holder[eventName] = this.holder[eventName] || [];
+      this.holder[eventName].push(fn);
+    }
+  }
 
-EventEmitter.prototype.emit = function(name, ...args) {
-  let c = this.list[name];
-  c.call(null, args);
+  emit(eventName, ...args) {
+    let eventColl = this.holder[eventName];
+    if (eventColl) {
+      eventColl.forEach(callback => callback(args));
+    }
+  }
 }
 
 let e = new EventEmitter();
-
 e.on('callme', function(args) {
   console.log(`you called me ${args}`);
+});
+e.on('callme', function(args) {
+  console.log(`testing`);
 });
 
 e.emit('callme', ['a','b'], {firstName: 'umesh', lastName: 'gohil'});
@@ -769,6 +789,8 @@ Math.max.apply(Math, arr); // Slow
 ```
 Question 40: DOM methods
 ```
+https://github.com/nefe/You-Dont-Need-jQuery
+
 var el = document.querySelector('div');
 el.childNodes;   // get the list of child nodes of el
 el.firstChild;   // get the first child node of el
@@ -791,6 +813,8 @@ el.removechild();  // remove the child node
 Array.from(NODES) // convert nodelist to regular array
 
 el.classList[contains | add | remove | replace]  // class of el
+
+el.dataset.<camelCaseName> // data-count is dataset.count, data-index-number is dataset.indexNumber
 
 el.setAttribute | el.getAttribute | el.removeAttribute // attributes of el
 
@@ -820,7 +844,7 @@ function debounce(callback, wait) {
       callbackArgs = null,
       context = this;
 
-  const later = () => callback.apply(context, callbackArgs);
+  const later = () => callback.call(context, ...callbackArgs);
 
   return function() {
     callbackArgs = arguments;
@@ -834,6 +858,27 @@ let handleClicked = debounce(() => {
 }, 500);
 
 document.addEventListener('click', handleClicked);
+
+// Throttle function is flooded with events but it is call after specified time
+const throttle = (fn, delay) => {
+  let lastcall;
+
+  return function(...args) {
+    let now = (new Date()).getTime();
+    if (now - lastcall < delay) {
+      return;
+    }
+
+    lastcall = now;
+    return fn(...args);
+  };
+};
+
+const tFn = throttle((e) => {
+  console.log(e.type);
+}, 200);
+
+document.addEventListener("mousemove", tFn);
 ```
 Question 43: Move all zero's to end
 ```
@@ -853,39 +898,36 @@ console.log(moveZeroToEnd([1, 8, 2, 0, 0, 0, 3, 4, 0, 5, 0]));  // [1, 8, 2, 3, 
 ```
 Question 44: Decode message in matrix [diagional down right, diagional up right]
 ```
-const decodeMessage = (matrix) => {
+const decodeMessage = (mat) => {
   // check if matrix is null or empty
-  if (matrix === null || matrix.length === 0) {
+  if (mat == null || mat.length === 0) {
     return '';
   }
+  let x = mat.length - 1;
+  let y = mat[0].length - 1;
+  let message = '';
+  let decode = (mat, i = 0, j = 0, direction = "DOWN") => {
+    message += mat[i][j];
 
-  let result = '',
-      //set the boundary of matrix
-      x = matrix.length,
-      y = matrix[0].length;
+    if (i === x) {
+      direction = "UP"
+    }  
 
-  let decode = function(matrix, i = 0, j = 0, direction = 'down') {
-    result += matrix[i][j];
-
-    if ((i + 1) === x) {
-      direction = 'up';
+    if (direction === "DOWN") {
+      i++;
+    } else {
+      i--;
     }
 
-    // if reach the boundary then reverse the direction or continue in that direction
-    (direction === 'down') ? i++ : i--;
-
-    j++;
-
-    //reached end, done with matrix
     if (j === y) {
       return;
     }
-    // if reached here, still need to process the matrix
-    decode(matrix, i, j, direction);
-  }
 
-  decode(matrix);
-  return result;
+    j++;
+    decode(mat, i, j, direction);
+  };
+  decode(mat);
+  return message;
 }
 
 let mat = [
@@ -899,32 +941,47 @@ console.log(decodeMessage(mat));  //IROELEA
 ```
 Question 45 : find a pair in array, whose sum is equal to given number.
 ```
-function hasPairWithSum(arr, sum) {  
-  //Array length cannot be less then 2
-  if (arr.length < 2) {
-    return null;
+const hasPairSum = (arr, sum) => {
+  if (arr == null && arr.length < 2) {
+    return false;
   }
 
-  let left = 0,
-      right = arr.length -1;
+  let left = 0;
+  let right = arr.length -1;
+  let result = false;
 
-  while(left < high) {
+  while(left < right && !result) {
     let pairSum = arr[left] + arr[right];
     if (pairSum < sum) {
-      left += 1;
+      left++;
     } else if (pairSum > sum) {
-      right -= 1;
+      right--;
     } else {
-      return [left, right]
-    }
+      result = true;
+    }   
   }
-  return null;
+  return result;
 }
 
-//Array is sorted
-console.log(hasPairWithSum([1,2,4,5], 8)); // null
-console.log(hasPairWithSum([1,2,4,4], 8)); // [2,3]
-NOTE: if array is not sorted then subract the value with sum and store in difference
+console.log(hasPairSum([1,2,4,5], 8)); // null
+console.log(hasPairSum([1,2,4,4], 8)); // [2,3]
+
+const hasPairSum = (arr, sum) => {
+  let difference = {};
+  let hasPair = false;
+  arr.forEach(item => {
+    let diff = sum - item;
+    if (!difference[diff]) {
+      difference[item] = true;
+    } else {
+      hasPair = true;
+    }
+  });
+  return hasPair;
+};
+console.log(hasPairSum([6, 4,3, 8], 8));
+
+// NOTE: if array is not sorted then subtract the value with sum and store in difference
 // then see if that value exist in difference then return true.
 ```
 Question 46 : Heron's Sqrt root Algorithm
@@ -1004,8 +1061,8 @@ Checkout below repository
 
 ## What happen when you click a link or request a page in browser
 - Brower checks DNS cache to find ip address.
-- if not find then check os, router, ISP cache to find ip address.
-- if not find then isp dns server initiates DNS query to find ip address.
+- if not find then check os, router and ISP cache to find ip address.
+- if not found then ISP dns server initiates DNS query to find ip address.
 - Once you get ip address, browser will try to establish TCP connection with server
 - Browser send http request to server.
 - Server handles the request and return the response.
