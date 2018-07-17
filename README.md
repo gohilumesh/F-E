@@ -5,7 +5,7 @@
 Question 1. Check if object is empty or not.
 ```
 function isEmpty(TEMP_OBJECT) {
-  return Object.keys(TEMP_OBJECT).length === 0 && TEMP_OBJECT.constructor === Object;
+  return typeof obj === "object" && TEMP_OBJECT.constructor === Object && Object.keys(TEMP_OBJECT).length === 0;
 }
 ```
 [more options](http://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object)
@@ -947,7 +947,7 @@ const hasPairSum = (arr, sum) => {
   }
 
   let left = 0;
-  let right = arr.length -1;
+  let right = arr.length - 1;
   let result = false;
 
   while(left < right && !result) {
@@ -990,6 +990,9 @@ Question 46 : Heron's Sqrt root Algorithm
 
 Question 1: Binary search tree [Add, Remove, find, contain, LCA, balanced?, height, toString, toArray]
 [follow this link](https://gist.github.com/gohilumesh/7b82d88b536c527c12de3d4945db8feb)
+
+Question : Linked List [insert, remove, nToLast, reverse, hasLoop, print]
+[follow this link](https://gist.github.com/gohilumesh/7bf294ec6e75301bdda666961949460c)
 
 Question 2: Quick sort Algorithm
 [Link](https://github.com/davidshariff/computer-science/blob/master/Sorting/QuickSort.js)

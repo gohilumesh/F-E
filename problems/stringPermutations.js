@@ -1,19 +1,18 @@
 const strPermutations = str => {
-    if (str.length < 2){
-      return str; // This is our break condition
+  if (str.length < 2) {
+    return str; // This is our break condition
+  }
+
+  let permutations = []; // This array will hold our permutations
+
+  for (let i = 0, len = str.length; i < len; i++) {
+    let char = str[i];
+    let remainingString = `${str.slice(0,i)}${str.slice(i+1)}`;
+    for (let subPermutation of strPermutations(remainingString)) {
+      permutations.push(char + subPermutation);
     }
-
-    let permutations = []; // This array will hold our permutations
-
-    for (var i=0; i<str.length; i++) {
-        let char = str[i];
-
-        let remainingString = `${str.slice(0,i)}${str.slice(i+1)}`;
-        for (let subPermutation of strPermutations(remainingString)) {
-          permutations.push(char + subPermutation);
-        }
-    }
-    return permutations;
+  }
+  return permutations;
 }
 
 console.log(strPermutations("abcd"));

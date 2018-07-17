@@ -10,7 +10,7 @@ const sortedArrayToBST = (nums) => {
      if (start > end) {
        return null
      }
-     let mid = Math.floor((end + start) / 2)
+     let mid = Math.floor((start + end) / 2)
      let root = new Node(nums[mid])
      root.left = sortedArrayToBSTRec(nums, start, mid - 1)
      root.right = sortedArrayToBSTRec(nums, mid + 1, end)

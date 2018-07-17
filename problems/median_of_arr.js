@@ -9,9 +9,9 @@ const median = (arr) => {
   let cloneArr = arr.slice();
   let sortedArr = cloneArr.sort((a, b) => a - b);
 
-  let mid = Math.floor((0, sortedArr.length - 1)/2)
+  let mid = Math.floor((0, sortedArr.length - 1) / 2);
   if (sortedArr.length % 2 === 0) {
-    return (sortedArr[mid] + sortedArr[mid +1]) / 2;
+    return (sortedArr[mid] + sortedArr[mid + 1]) / 2;
   }
   return sortedArr[mid];
 };

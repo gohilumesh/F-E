@@ -60,9 +60,9 @@ class Graph {
     if (typeof fn === "function") {
       fn(vertex);
     }
-    this.edges[vertex].forEach(vEdge => {
-      if(!visited[vEdge]) {
-        this._traverseDFS(vEdge, visited, fn);
+    this.edges[vertex].forEach(adjVertex => {
+      if(!visited[adjVertex]) {
+        this._traverseDFS(adjVertex, visited, fn);
       }
     });
   }
@@ -76,7 +76,9 @@ class Graph {
 
     while(queue.length) {
       vertex = queue.shift();
-      fn(vertex);
+      if (typeof fn === "function") {
+        fn(vertex);
+      }
       this.edges[vertex].forEach(vEdge => {
         if(!visited[vEdge]) {
           visited[vEdge] = true;
